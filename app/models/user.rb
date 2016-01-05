@@ -5,6 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :household
-  has_many :chorepairings
-  has_many :chores, through: :chorepairings
+  has_many :chores
 end

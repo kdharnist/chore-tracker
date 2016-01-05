@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :chores
-  resources :households
+  resources :households, except: :index
 
 end

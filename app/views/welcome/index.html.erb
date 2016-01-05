@@ -1,1 +1,12 @@
 <h1>Welcome to Chore Tracker!</h1>
+
+<% if user_signed_in? != true %>
+<p><%= link_to "Sign In or Sign Up Now!", new_user_registration_path %> to use Chore Tracker!</p>
+<p>Using Chore Tracker will let you do all this cool stuff I'll explain later</p>
+<% end %>
+
+<% if user_signed_in?%>
+
+<p><%= link_to "New Household", new_household_path %></p>
+
+<% end %>

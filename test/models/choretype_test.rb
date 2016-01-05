@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ChorepairingTest < ActiveSupport::TestCase
+class ChoretypeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
