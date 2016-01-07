@@ -1,0 +1,12 @@
+<h1>Your Chores</h1>
+
+<ul>
+  <% @chores.each do |chore| %>
+     <li><%= chore.name %> </li>
+   
+     <p> <%= "Estimated Time: #{chore.points} minutes, Status: #{chore.status}" %> </p>
+   
+  <% end %>
+
+<h2> <%= "You have #{@chores.sum(:points)} total minutes of chores"%> </h2>
+</ul>

@@ -1,0 +1,20 @@
+<h1>Create a New Chore</h1>
+
+<%=  form_for @chore do |f| %>
+  <fieldset>
+    <div>
+      <%=  f.label :chore_name %>
+      <%=  f.text_field :name %>
+    </div>
+    <div>
+      <%=  f.label :time_in_minutes %>
+      <%=  f.text_field :points %>
+    </div>
+    <div>
+      <%=  f.label :Complete_or_incomplete %>
+      <%=  f.text_field :status %>
+    </div>
+  </fieldset>
+  <%=  f.submit "Submit" %>
+  <%= link_to 'Home', root_path %>
+<% end %>

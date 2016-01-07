@@ -1,16 +1,16 @@
 class HouseholdsController < ApplicationController
 
 def index
-  @household = current_user.household
+  @households = Household.all
 end
 
 def new
-  @household = Household.new
+  @household = current_user.build_household
 end
 
 def create
-  @household = current_user.households.new household_params
-
+  @household = current_user.create_household(household_params)
+  @household.users << current_user
   if @household.save!
     redirect_to @household
   else
@@ -19,8 +19,14 @@ def create
 end
 
 def show
-  @story = Story.find(params[:id])
+  @household = Household.find(params[:id])
+  @users = @household.users
 end
+
+def update
+    @household = Household.find(params[:id])
+    @household.users << current_user unless @household.users.include? current_user
+ end
 
 
 private

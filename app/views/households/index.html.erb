@@ -1,0 +1,9 @@
+<h1>Your Household</h1>
+
+<ul>
+  <% @households.each do |household| %>
+    <li>
+      <%= link_to household.name, household_path(household) %>
+    </li>
+  <% end %>
+</ul>

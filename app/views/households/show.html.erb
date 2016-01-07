@@ -1,0 +1,17 @@
+<h1> <%= @household.name %></h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <strong> <p> <%= user.email %> </p></strong>
+    <% @chores = user.chores %>
+    	<% @chores.each do |chore| %>
+    		<li>
+    	 		<%= "#{chore.name} (#{chore.points} minutes), Status: #{chore.status}" %>
+    		</li>
+    	<% end %>
+    <strong><%= "#{user.email} has #{@chores.sum(:points)} total minutes of chores" %> </strong>
+    <p></p>
+  <% end %>
+</ul>
+
+<%= link_to "Join Household", household_path(:id => @household.id), :method => :put %>
