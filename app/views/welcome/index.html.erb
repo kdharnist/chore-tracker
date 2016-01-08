@@ -5,9 +5,15 @@
 <p>Using Chore Tracker will let you do all this cool stuff I'll explain later</p>
 <% end %>
 
-<% if user_signed_in?%>
+<% if user_signed_in? and current_user.household_id != nil %>
+	<p><%= link_to "Your Household", households_path %>
+	<% elsif user_signed_in? and current_user.household_id == nil %>
+	<%= link_to "All Households", households_path %> | 
+<% end %>
 
-<p><%= link_to "Your Household", households_path %> | <%= link_to "New Chore", new_chore_path %>
+<% if user_signed_in? %>
+
+<%= link_to "New Chore", new_chore_path %>
 
 <p><%= link_to "New Household", new_household_path %></p>
 
