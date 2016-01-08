@@ -1,3 +1,21 @@
 <h1> <%= @chore.name %> </h1>
 
-<p> <%= "Value = #{@chore.points}" %> </p>
+<li> <%= "Time: #{@chore.points} minutes" %> </li>
+<li> <%= "Status: #{@chore.status}" %> 
+
+<% if current_user.household_id != nil and @chore.status == 'Incomplete'%>
+<p></p>
+<%= link_to "Mark as Complete", complete_chore_path(@chore)%>
+<% end %>
+
+<% if current_user.household_id != nil and @chore.status == 'Complete'%>
+<p></p>
+<%= link_to "Mark as Incomplete", incomplete_chore_path(@chore) %>
+<% end %>
+
+<p></p>
+<% if current_user.household_id != nil %>
+<%= link_to "Your Household", household_path(current_user.household) %>
+<% else %>
+<%= link_to "All Households", households_path(current_user.household) %>
+<% end %>

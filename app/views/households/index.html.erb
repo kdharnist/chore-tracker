@@ -1,9 +1,15 @@
-<h1>Your Household</h1>
+<h1>Households</h1>
 
+<% if @households == nil %>
+<strong>Your Household</strong>
+<li><%= link_to @household.name, household_path(@household) %></li>
+<% else %>
+<strong>All Households</strong>
 <ul>
   <% @households.each do |household| %>
     <li>
       <%= link_to household.name, household_path(household) %>
     </li>
   <% end %>
+<% end %>
 </ul>

@@ -7,10 +7,10 @@
 
 <% if user_signed_in?%>
 
-<p><%= link_to "Your Household", households_path %></p>
-<p><%= link_to "Your Chores", chores_path %></p>
+<p><%= link_to "Your Household", households_path %> | <%= link_to "New Chore", new_chore_path %>
+
 <p><%= link_to "New Household", new_household_path %></p>
-<p><%= link_to "New Chore", new_chore_path %></p>
+
 
 
 <% end %>
