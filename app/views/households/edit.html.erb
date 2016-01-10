@@ -1,0 +1,10 @@
+<h1><%= "Edit #{@household.name}" %></h1>
+
+<%= render 'form' %>
+<p></p>
+<%= link_to 'Back to Household', household_path(@household) %>
+
+<p></p>
+<% if current_user.household_id == @household.id %>
+<%= link_to 'Delete Household', household_path(@household), :method => :delete %>
+<% end %>

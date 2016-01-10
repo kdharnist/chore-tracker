@@ -2,14 +2,15 @@
 
 <ul>
   <% @users.each do |user| %>
+  	<p></p>
     <% @chores = user.chores %>
-    <strong> <p> 
-    <%= "#{user.email} has #{@chores.where(status: 'Incomplete').sum(:points)} minutes of incomplete chores and #{@chores.where(status: 'Complete').sum(:points)} minutes of complete chores" %>  
-    </p></strong>
+    <strong> 
+    <%= "#{user.email} (Incomplete Chores: #{@chores.where(status: 'Incomplete').sum(:points)} minutes, Complete Chores: #{@chores.where(status: 'Complete').sum(:points)} minutes)" %>  
+    </strong>
     	<% @chores.each do |chore| %>
     		<li>
     	 		<%= link_to "#{chore.name}", chore_path(chore) %>
-    	 		<%= "(#{chore.points} minutes), Status: #{chore.status}"%>
+    	 		<%= "(#{chore.points} minutes) | Status: #{chore.status}"%>
     	 		 | 
     	 		<% if chore.status == 'Incomplete'%>
 					<%= link_to "Mark Complete/Incomplete", complete_chore_path(chore) %>
@@ -25,18 +26,24 @@
    <% end %>
 </ul>
 
-<% if current_user.household_id != @household.id %>
-<%= link_to "Join Household", join_household_path(@household)%>  
-<% end %>
-
 <% if current_user.household_id == @household.id %>
 <p><%= link_to "New Chore", new_chore_path%></p>
 <% end %>
 
-<% if current_user.household_id == @household.id %>
-<%= link_to "Leave Household", leave_household_path(@household) %>
+<% if current_user.household_id != @household.id%>
+	<%= link_to "Join/Leave Household", join_household_path(@household) %>
+<% else %>
+	<%= link_to "Join/Leave Household", leave_household_path(@household) %>
+<% end %>
+
+<% if current_user.household_id == @household.id%>
+	<%= "|" %>
+	<%= link_to "Edit Household", edit_household_path(@household) %>
 <% end %>
 
 <% if current_user.household_id != @household.id %>
 <p><%= link_to "All Households", households_path%></p>
 <% end %>
+
+<p></p>
+<%= link_to 'Home', root_path %>

@@ -1,0 +1,13 @@
+<%=  form_for @chore do |f| %>
+  <fieldset>
+    <div>
+      <%=  f.label :chore_name %>
+      <%=  f.text_field :name %>
+    </div>
+    <div>
+      <%=  f.label :time_in_minutes %>
+      <%=  f.text_field :points %>
+    </div>
+  </fieldset>
+  <%=  f.submit "Submit" %>
+<% end %>

@@ -1,0 +1,10 @@
+<h1><%= "Edit #{@chore.name}" %></h1>
+
+<%= render 'form' %>
+<p></p>
+
+<% if current_user.household_id != nil %>
+<%= link_to 'Your Household', household_path(@household) %>
+<% else %>
+<%= link_to "Your Chores", chores_path %>
+<% end %>

@@ -1,16 +1,11 @@
 <h1>Create a New Chore</h1>
 
-<%=  form_for @chore do |f| %>
-  <fieldset>
-    <div>
-      <%=  f.label :chore_name %>
-      <%=  f.text_field :name %>
-    </div>
-    <div>
-      <%=  f.label :time_in_minutes %>
-      <%=  f.text_field :points %>
-    </div>
-  </fieldset>
-  <%=  f.submit "Submit" %>
-  <%= link_to 'Home', root_path %>
+<%= render 'form' %>
+<p></p>
+<% if current_user.household_id != nil %>
+<%= link_to "Your Household", household_path(current_user.household) %>
+<% else %>
+<%= link_to "All Households", households_path(current_user.household) %>
 <% end %>
+<p></p>
+<%= link_to "Home", root_path %>

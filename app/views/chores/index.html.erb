@@ -1,12 +1,20 @@
 <h1>Your Chores</h1>
 
 <ul>
-  <% @chores.each do |chore| %>
-     <li><%= chore.name %> </li>
-   
-     <p> <%= "Estimated Time: #{chore.points} minutes, Status: #{chore.status}" %> </p>
-   
-  <% end %>
-
-<h2> <%= "You have #{@chores.sum(:points)} total minutes of chores"%> </h2>
+<% @chores.each do |chore| %>
+    		<li>
+    	 		<%= link_to "#{chore.name}", chore_path(chore) %>
+    	 		<%= "(#{chore.points} minutes) | Status: #{chore.status}"%>
+    	 		 | 
+				<%= link_to "Edit Chore", edit_chore_path(chore) %>
+				 |
+				<%= link_to "Delete", chore_path(chore), :method => :delete %>
+    	 		
+		<% end %>
+    	 	</li>
 </ul>
+
+<strong><%= "Incomplete Chores: #{@chores.where(status: 'Incomplete').sum(:points)} minutes, Complete Chores: #{@chores.where(status: 'Complete').sum(:points)} minutes" %> </strong>
+
+<p><%= link_to "New Chore", new_chore_path%></p>
+<%= link_to 'Home', root_path %>

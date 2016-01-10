@@ -1,11 +1,14 @@
 class ChoresController < ApplicationController
 
+	before_action :authenticate_user!
+	
 	def index
 	  @chores = current_user.chores
 	end
 
 	def new
 	  @chore = current_user.chores.build
+	  @household = current_user.household
 	end
 
 	def create
@@ -24,6 +27,7 @@ class ChoresController < ApplicationController
 
 	def edit
 	  @chore = Chore.find(params[:id])
+	  @household = current_user.household
 	end
 
 	def update
