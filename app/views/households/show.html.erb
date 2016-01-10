@@ -1,6 +1,5 @@
 <h1> <%= @household.name %></h1>
 
-<ul>
   <% @users.each do |user| %>
   	<p></p>
     <% @chores = user.chores %>
@@ -24,7 +23,6 @@
     	 	</li>
     	
    <% end %>
-</ul>
 
 <% if current_user.household_id == @household.id %>
 <p><%= link_to "New Chore", new_chore_path%></p>
