@@ -45,6 +45,7 @@ class HouseholdsController < ApplicationController
   	def destroy
     	@household = Household.find(params[:id])
     	@household.destroy
+    	current_user.update_attribute(:household_id, nil)
 
     	redirect_to households_path
 	end

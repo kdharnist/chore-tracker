@@ -1,7 +1,7 @@
 class ChoresController < ApplicationController
 
 	before_action :authenticate_user!
-	
+
 	def index
 	  @chores = current_user.chores
 	end
@@ -55,7 +55,11 @@ class ChoresController < ApplicationController
     	@chore = Chore.find(params[:id])
     	@chore.destroy
 
-    	redirect_to household_path(current_user.household)
+    	if current_user.household_id != nil
+    		redirect_to household_path(current_user.household)
+    	else
+    		redirect_to chores_path
+		end
 	end
 
 

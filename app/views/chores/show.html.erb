@@ -3,14 +3,12 @@
 <li> <%= "Time: #{@chore.points} minutes" %> </li>
 <li> <%= "Status: #{@chore.status}" %> 
 
-<% if current_user.household_id != nil%>
 <p></p>
 <%= link_to "Edit Chore", edit_chore_path(@chore)%>
-<% end %>
 
 <p></p>
 <% if current_user.household_id != nil %>
 <%= link_to "Your Household", household_path(current_user.household) %>
 <% else %>
-<%= link_to "All Households", households_path(current_user.household) %>
+<%= link_to "Your Chores", chores_path %>
 <% end %>
