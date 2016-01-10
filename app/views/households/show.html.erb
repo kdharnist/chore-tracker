@@ -28,6 +28,8 @@
 <p><%= link_to "New Chore", new_chore_path%></p>
 <% end %>
 
+<p></p>
+
 <% if current_user.household_id != @household.id%>
 	<%= link_to "Join/Leave Household", join_household_path(@household) %>
 <% else %>
