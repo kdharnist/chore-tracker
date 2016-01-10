@@ -2,8 +2,7 @@
 
   <% @users.each do |user| %>
   	<p></p>
-    <% @unsorted_chores = user.chores %>
-    <% @chores = @unsorted_chores.sort_by &:created_at %>
+    <% @chores = user.chores.sort_by &:name %>
     <strong> 
     <%= "#{user.email} (Incomplete Chores: #{@chores.where(status: 'Incomplete').sum(:points)} minutes, Complete Chores: #{@chores.where(status: 'Complete').sum(:points)} minutes)" %>  
     </strong>
