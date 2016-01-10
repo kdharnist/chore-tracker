@@ -11,22 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160105220035) do
+ActiveRecord::Schema.define(version: 20160110183008) do
 
   create_table "chores", force: :cascade do |t|
     t.string   "name"
     t.integer  "points"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "status"
-    t.integer  "user_id"
-    t.integer  "choretype_id"
-  end
-
-  create_table "choretypes", force: :cascade do |t|
-    t.string   "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "status"
+    t.integer  "user_id"
   end
 
   create_table "households", force: :cascade do |t|
