@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<!-- Modification to add sign-in/out links to all views in the app -->
+
 <% if user_signed_in? %>
   <%= link_to "Sign Out #{current_user.email}", destroy_user_session_path, method: :delete %>
 <% else %>

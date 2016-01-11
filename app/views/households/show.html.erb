@@ -1,3 +1,9 @@
+<!-- Expected to be most used page for majority of users -->
+<!-- For each household, display all users and all chores for each user-->
+<!-- Enable chores to be marked complete or incomplete from the household page -->
+<!-- Total complete and incomplete chore minutes for each user -->
+<!-- Allow a user to join or leave the household -->
+
 <h1> <%= @household.name %></h1>
 
   <% @users.each do |user| %>
@@ -24,11 +30,14 @@
     	
    <% end %>
 
+<!-- If the user belongs to the housheold, let them create a new chore here -->
 <% if current_user.household_id == @household.id %>
 <p><%= link_to "New Chore", new_chore_path%></p>
 <% end %>
 
 <p></p>
+
+<!-- Allow a user to join or leave the household -->
 
 <% if current_user.household_id != @household.id%>
 	<%= link_to "Join/Leave Household", join_household_path(@household) %>
@@ -36,10 +45,14 @@
 	<%= link_to "Join/Leave Household", leave_household_path(@household) %>
 <% end %>
 
+<!-- Allow a member user to change the name of the household -->
+
 <% if current_user.household_id == @household.id%>
 	<%= "|" %>
 	<%= link_to "Edit Household", edit_household_path(@household) %>
 <% end %>
+
+<!-- Provide link to all households if user is not a member of current household -->
 
 <% if current_user.household_id != @household.id %>
 <p><%= link_to "All Households", households_path%></p>

@@ -1,13 +1,7 @@
+<!-- Create a new household view -->
+
 <h1>Create a New Household</h1>
 
-<%=  form_for @household do |f| %>
-  <fieldset>
-    <div>
-      <%=  f.label :household_name %>
-      <%=  f.text_field :name %>
-    </div>
-  </fieldset>
-  <%=  f.submit "Submit" %>
-<% end %>
+<%= render 'form' %>
 <p></p>
 <%= link_to 'Home', root_path %>

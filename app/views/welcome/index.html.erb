@@ -1,3 +1,5 @@
+<!-- Welcome page for new users + homepage for existing users -->
+
 <h1>Welcome to Chore Tracker!</h1>
 
 <% if user_signed_in? != true %>
@@ -12,19 +14,19 @@
 <p><strong><%= link_to "Sign Up Today!", new_user_registration_path %></strong></p>
 <% end %>
 
+<!-- If user signed in, link directly to their household or all households if they don't have one  -->
+
 <% if user_signed_in? and current_user.household_id != nil %>
 	<p><%= link_to "Your Household", households_path %> | 
 	<% elsif user_signed_in? and current_user.household_id == nil %>
 	<%= link_to "All Households", households_path %> | 
 <% end %>
 
-<% if user_signed_in? %>
+<!-- Allow any logged in user to create new households or chores and see all their chores-->
 
+<% if user_signed_in? %>
 <%= link_to "New Household", new_household_path %> 
 <p></p>
 <%= link_to "Your Chores", chores_path %> | 
 <%= link_to "New Chore", new_chore_path %>
-
-
-
 <% end %>

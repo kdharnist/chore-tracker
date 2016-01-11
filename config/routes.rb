@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'welcome#index'
 
+  # Helper routes for marking chores complete or incomplete
+
   resources :chores do
   	member do
   		get 'complete'
@@ -11,6 +13,8 @@ Rails.application.routes.draw do
   end
 
   resources :households
+
+  # Helper routes for a user joining or leaving a household
 
   resources :households do
   	member do
